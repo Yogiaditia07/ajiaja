@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #008d13, #c7e906);
+            color: #333;
+            overflow-x: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+.kard{
+    background-color: white;
+    text-align: center;
+    border-radius: 50px;
+
+}
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #444;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: slideDown 1.5s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card .description {
+            padding: 15px;
+            font-size: 1.2em;
+            color: #555;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .floating-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: floating 3s infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -60%) scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Koleksi Kartu Jualan Saya</div>
+        <div class="gallery">
+            <div class="card">
+                <img src="kartu.jpg" alt="Kartu 1">
+                <div class="description">Kartu XL - Rp10.000</div>
+            </div>
+            <div class="card">
+                <img src="telkomsel2.webp" alt="Kartu 2">
+                <div class="description">Kartu TELKOMSEL - Rp15.000</div>
+            </div>
+            <div class="card">
+                <img src="axis.jpg" alt="Kartu 3">
+                <div class="description">Kartu AXIS - Rp20.000</div>
+            </div>
+            <div class="card">
+                <img src="m3.png" alt="Kartu 1">
+                <div class="description">Kartu XL - Rp10.000</div>
+            </div>
+    
+        </div>
+        <br><br><br>
+        <div class="kard"><a href="aji.html">HOME</a></div>       
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.transform = `rotateX(${-(y - rect.height / 2) / 10}deg) rotateY(${(x - rect.width / 2) / 10}deg)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'rotateX(0) rotateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
